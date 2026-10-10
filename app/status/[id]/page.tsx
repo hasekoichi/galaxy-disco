@@ -106,12 +106,14 @@ function StatusContent() {
 
       {/* --- コンテンツレイヤー --- */}
       <div className="relative z-10">
-        {/* ヘッダー */}
-        <header className="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 p-5 text-center sticky top-0 z-20 shadow-xl">
-          <h1 className="text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            80's GALAXY DISCO
+        {/* ヘッダー（スマホの横幅いっぱいにダイナミックに表示） */}
+        <header className="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 py-5 px-3 text-center sticky top-0 z-20 shadow-xl w-full">
+          <p className="text-xs sm:text-sm font-bold tracking-widest text-pink-400 mb-1">
+            2年3組
+          </p>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent w-full">
+            GALAXY DISCO
           </h1>
-          <p className="text-sm text-purple-200 font-bold mt-1">宇宙で一番ココが輝く！</p>
         </header>
 
         <div className="max-w-md mx-auto p-4 space-y-6">
