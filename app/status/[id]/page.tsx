@@ -101,17 +101,17 @@ function StatusContent() {
         className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
         style={{ backgroundImage: `url('/galaxy.jpg')` }}
       ></div>
-      {/* 暗めのオーバーレイをかけて文字を見やすくする */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/85 to-slate-950/95 z-0"></div>
+      {/* 濃いめのオーバーレイをかけて文字を絶対に見やすくする */}
+      <div className="absolute inset-0 bg-slate-950/90 z-0"></div>
 
       {/* --- コンテンツレイヤー --- */}
       <div className="relative z-10">
-        {/* ヘッダー（スマホの横幅いっぱいにダイナミックに表示） */}
-        <header className="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 py-5 px-3 text-center sticky top-0 z-20 shadow-xl w-full">
-          <p className="text-xs sm:text-sm font-bold tracking-widest text-pink-400 mb-1">
+        {/* ヘッダー（文字がハッキリ見えるように背景をしっかり敷いて、白＆ピンクの単色＋影に変更） */}
+        <header className="bg-slate-900 border-b-2 border-purple-500/50 py-5 px-3 text-center sticky top-0 z-20 shadow-2xl w-full">
+          <p className="text-sm sm:text-base font-black tracking-widest text-pink-400 mb-1">
             2年3組
           </p>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-wider bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent w-full">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-wider text-white drop-shadow-[0_2px_10px_rgba(236,72,153,0.8)] w-full">
             GALAXY DISCO
           </h1>
         </header>
@@ -125,7 +125,7 @@ function StatusContent() {
               <span className="text-sm font-bold uppercase tracking-wider text-purple-100 bg-slate-800 px-4 py-1.5 rounded-full border border-slate-600">
                 あなたの整理券番号
               </span>
-              <div className="text-7xl font-black text-white mt-4 tracking-tight">
+              <div className="text-7xl font-black text-white mt-4 tracking-tight drop-shadow-md">
                 No. <span className="text-pink-400">{myTicket.ticket_number}</span>
               </div>
               <p className="text-lg text-slate-100 font-bold mt-2">ご利用人数: {myTicket.party_size}名様</p>
