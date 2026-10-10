@@ -106,7 +106,7 @@ function StatusContent() {
 
       {/* --- コンテンツレイヤー --- */}
       <div className="relative z-10">
-        {/* ヘッダー（文字がハッキリ見えるように背景をしっかり敷いて、白＆ピンクの単色＋影に変更） */}
+        {/* ヘッダー */}
         <header className="bg-slate-900 border-b-2 border-purple-500/50 py-5 px-3 text-center sticky top-0 z-20 shadow-2xl w-full">
           <p className="text-sm sm:text-base font-black tracking-widest text-pink-400 mb-1">
             2年3組
@@ -225,14 +225,18 @@ function StatusContent() {
 
             <div className="space-y-4 text-base">
               <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-inner">
-                <h3 className="font-bold text-indigo-300 text-lg mb-1">🌌 宇宙×80's ディスコ空間</h3>
+                <h3 className="font-bold text-indigo-300 text-base sm:text-lg mb-1 tracking-tight break-keep">
+                  🌌 宇宙×80's ディスコ空間
+                </h3>
                 <p className="text-slate-100 text-sm leading-relaxed font-medium">
                   宇宙をイメージした空間にミラーボールやネオンライトが輝く、ギラギラでポップな80年代ディスコを再現！
                 </p>
               </div>
 
               <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-inner">
-                <h3 className="font-bold text-pink-300 text-lg mb-1">🎧 特設DJブース & フォトスポット</h3>
+                <h3 className="font-bold text-pink-300 text-base sm:text-lg mb-1 tracking-tight break-keep">
+                  🎧 DJブース & フォトスポット
+                </h3>
                 <p className="text-slate-100 text-sm leading-relaxed font-medium">
                   DJブースをはじめ、店内にはインスタ映え間違いなしのフォトスポットをたくさんご用意しています！
                 </p>
