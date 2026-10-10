@@ -105,8 +105,8 @@ function StatusContent() {
       <div className="absolute inset-0 bg-slate-950/90 z-0"></div>
 
       {/* --- コンテンツレイヤー --- */}
-      <div className="relative z-10">
-        {/* ヘッダー（タイトルにピンクネオンの影） */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* ヘッダー */}
         <header className="bg-slate-900 border-b-2 border-purple-500/50 py-5 px-3 text-center sticky top-0 z-20 shadow-[0_0_20px_rgba(168,85,247,0.4)] w-full">
           <p className="text-sm sm:text-base font-black tracking-widest text-pink-400 mb-1 drop-shadow-[0_0_3px_rgba(244,114,182,0.8)]">
             2年3組
@@ -116,8 +116,8 @@ function StatusContent() {
           </h1>
         </header>
 
-        <div className="max-w-md mx-auto p-4 space-y-6">
-          {/* ステータスカード（上部のバーをネオンに） */}
+        <div className="max-w-md mx-auto p-4 space-y-6 flex-grow w-full">
+          {/* ステータスカード */}
           <div className="bg-slate-900/95 border-2 border-slate-700 rounded-3xl p-6 sm:p-8 shadow-[0_0_30px_rgba(0,0,0,0.5)] text-center relative overflow-hidden backdrop-blur-md">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-[0_0_15px_rgba(236,72,153,0.9)]"></div>
 
@@ -131,7 +131,7 @@ function StatusContent() {
               <p className="text-lg text-slate-100 font-bold mt-2">ご利用人数: {myTicket.party_size}名様</p>
             </div>
 
-            {/* ステータス表示ボックス（ネオン枠） */}
+            {/* ステータス表示ボックス */}
             <div className="mb-6">
               <p className="text-sm font-bold text-slate-200 mb-2">現在のステータス</p>
               
@@ -244,6 +244,11 @@ function StatusContent() {
             </div>
           </div>
         </div>
+
+        {/* --- フッター（開発者クレジット） --- */}
+        <footer className="mt-auto py-8 text-center text-slate-400 text-xs sm:text-sm font-bold tracking-wider">
+          Powered By 2338 長谷川皓一
+        </footer>
       </div>
     </main>
   )
