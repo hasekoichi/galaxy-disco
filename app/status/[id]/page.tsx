@@ -95,7 +95,7 @@ function StatusContent() {
   }
 
   return (
-    <main className="min-h-screen relative text-white pb-16 bg-slate-950">
+    <main className="min-h-screen relative text-white pb-16 bg-slate-950 font-sans">
       {/* --- 背景画像レイヤー (galaxy.jpg) --- */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
@@ -106,49 +106,49 @@ function StatusContent() {
 
       {/* --- コンテンツレイヤー --- */}
       <div className="relative z-10">
-        {/* ヘッダー */}
-        <header className="bg-slate-900 border-b-2 border-purple-500/50 py-5 px-3 text-center sticky top-0 z-20 shadow-2xl w-full">
-          <p className="text-sm sm:text-base font-black tracking-widest text-pink-400 mb-1">
+        {/* ヘッダー（タイトルにピンクネオンの影） */}
+        <header className="bg-slate-900 border-b-2 border-purple-500/50 py-5 px-3 text-center sticky top-0 z-20 shadow-[0_0_20px_rgba(168,85,247,0.4)] w-full">
+          <p className="text-sm sm:text-base font-black tracking-widest text-pink-400 mb-1 drop-shadow-[0_0_3px_rgba(244,114,182,0.8)]">
             2年3組
           </p>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-wider text-white drop-shadow-[0_2px_10px_rgba(236,72,153,0.8)] w-full">
-            GALAXY DISCO
+          <h1 className="text-3xl sm:text-5xl font-black tracking-wider text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] w-full">
+            GALAXY <span className="drop-shadow-[0_0_10px_rgba(236,72,153,1)]">DISCO</span>
           </h1>
         </header>
 
         <div className="max-w-md mx-auto p-4 space-y-6">
-          {/* ステータスカード */}
-          <div className="bg-slate-900/95 border-2 border-slate-700 rounded-3xl p-6 sm:p-8 shadow-2xl text-center relative overflow-hidden backdrop-blur-md">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.7)]"></div>
+          {/* ステータスカード（上部のバーをネオンに） */}
+          <div className="bg-slate-900/95 border-2 border-slate-700 rounded-3xl p-6 sm:p-8 shadow-[0_0_30px_rgba(0,0,0,0.5)] text-center relative overflow-hidden backdrop-blur-md">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-[0_0_15px_rgba(236,72,153,0.9)]"></div>
 
-            <div className="mb-6">
-              <span className="text-sm font-bold uppercase tracking-wider text-purple-100 bg-slate-800 px-4 py-1.5 rounded-full border border-slate-600">
+            <div className="mb-6 pt-2">
+              <span className="text-sm font-bold uppercase tracking-wider text-purple-100 bg-slate-800 px-4 py-1.5 rounded-full border border-slate-600 shadow-inner">
                 あなたの整理券番号
               </span>
-              <div className="text-7xl font-black text-white mt-4 tracking-tight drop-shadow-md">
-                No. <span className="text-pink-400">{myTicket.ticket_number}</span>
+              <div className="text-7xl font-black text-white mt-4 tracking-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
+                No. <span className="text-pink-400 drop-shadow-[0_0_12px_rgba(236,72,153,1)]">{myTicket.ticket_number}</span>
               </div>
               <p className="text-lg text-slate-100 font-bold mt-2">ご利用人数: {myTicket.party_size}名様</p>
             </div>
 
-            {/* ステータス表示ボックス */}
+            {/* ステータス表示ボックス（ネオン枠） */}
             <div className="mb-6">
               <p className="text-sm font-bold text-slate-200 mb-2">現在のステータス</p>
               
               {myTicket.status === 'waiting' && (
-                <div className="bg-slate-950 border-2 border-yellow-500/60 rounded-2xl p-5 shadow-inner">
-                  <p className="text-2xl font-black text-yellow-300 animate-pulse tracking-wide">順番待ち中です</p>
+                <div className="bg-slate-950 border-2 border-yellow-500/60 rounded-2xl p-5 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                  <p className="text-2xl font-black text-yellow-300 animate-pulse tracking-wide drop-shadow-[0_0_8px_rgba(250,204,21,0.9)]">順番待ち中です</p>
                 </div>
               )}
               {myTicket.status === 'called' && (
-                <div className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-2xl p-5 shadow-xl shadow-pink-600/50 animate-bounce">
-                  <p className="text-2xl font-black tracking-wider">まもなくご案内です！</p>
+                <div className="bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-2xl p-5 shadow-[0_0_20px_rgba(236,72,153,0.6)] animate-bounce border-2 border-pink-400/50">
+                  <p className="text-2xl font-black tracking-wider drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]">まもなくご案内です！</p>
                   <p className="text-base mt-1.5 font-bold text-pink-100">受付にお越しください</p>
                 </div>
               )}
               {myTicket.status === 'entered' && (
-                <div className="bg-slate-950 border-2 border-emerald-500/60 rounded-2xl p-5 shadow-inner">
-                  <p className="text-2xl font-black text-emerald-300 tracking-wide">ご案内完了しました</p>
+                <div className="bg-slate-950 border-2 border-emerald-500/60 rounded-2xl p-5 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                  <p className="text-2xl font-black text-emerald-300 tracking-wide drop-shadow-[0_0_8px_rgba(52,211,153,0.9)]">ご案内完了しました</p>
                 </div>
               )}
             </div>
@@ -159,7 +159,7 @@ function StatusContent() {
               {currentCalled.length > 0 ? (
                 <div className="flex flex-wrap gap-2.5">
                   {currentCalled.map((t) => (
-                    <span key={t.id} className="bg-purple-600 text-white font-black text-lg px-4 py-1.5 rounded-xl shadow border border-purple-400">
+                    <span key={t.id} className="bg-purple-600 text-white font-black text-lg px-4 py-1.5 rounded-xl border border-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]">
                       No. {t.ticket_number}
                     </span>
                   ))}
@@ -173,7 +173,7 @@ function StatusContent() {
           {/* --- セクション1: 限定バブルスイーツ＆ドリンク --- */}
           <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4 backdrop-blur-md">
             <div className="border-b border-slate-800 pb-3">
-              <h2 className="text-lg font-black text-pink-400 flex items-center gap-2">
+              <h2 className="text-lg font-black text-pink-400 flex items-center gap-2 drop-shadow-[0_0_5px_rgba(244,114,182,0.7)]">
                 🍰 限定バブルスイーツ＆ドリンク
               </h2>
             </div>
@@ -189,7 +189,7 @@ function StatusContent() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-pink-300 text-lg mb-1">🧇 ギャラクシー・ワッフル</h3>
+                  <h3 className="font-bold text-pink-300 text-lg mb-1 drop-shadow-[0_0_3px_rgba(244,114,182,0.6)]">🧇 ギャラクシー・ワッフル</h3>
                   <p className="text-slate-100 text-sm leading-relaxed font-medium">
                     チョコソース＆ホイップをたっぷりトッピングした特製ワッフル！
                   </p>
@@ -206,7 +206,7 @@ function StatusContent() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-purple-300 text-lg mb-1">🥤 コスモ・ソーダ</h3>
+                  <h3 className="font-bold text-purple-300 text-lg mb-1 drop-shadow-[0_0_3px_rgba(168,85,247,0.6)]">🥤 コスモ・ソーダ</h3>
                   <p className="text-slate-100 text-sm leading-relaxed font-medium">
                     シュワシュワの炭酸に濃厚グレープ＆ブルーベリー、ホイップを重ねた爽快ドリンク！
                   </p>
@@ -218,14 +218,14 @@ function StatusContent() {
           {/* --- セクション2: 見どころ＆コンセプト --- */}
           <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4 backdrop-blur-md">
             <div className="border-b border-slate-800 pb-3">
-              <h2 className="text-lg font-black text-purple-400 flex items-center gap-2">
+              <h2 className="text-lg font-black text-purple-400 flex items-center gap-2 drop-shadow-[0_0_5px_rgba(168,85,247,0.7)]">
                 ✨ 80's GALAXY DISCOの見どころ
               </h2>
             </div>
 
             <div className="space-y-4 text-base">
               <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-inner">
-                <h3 className="font-bold text-indigo-300 text-base sm:text-lg mb-1 tracking-tight break-keep">
+                <h3 className="font-bold text-indigo-300 text-base sm:text-lg mb-1 tracking-tight break-keep drop-shadow-[0_0_3px_rgba(129,140,248,0.6)]">
                   🌌 宇宙×80's ディスコ空間
                 </h3>
                 <p className="text-slate-100 text-sm leading-relaxed font-medium">
@@ -234,7 +234,7 @@ function StatusContent() {
               </div>
 
               <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 shadow-inner">
-                <h3 className="font-bold text-pink-300 text-base sm:text-lg mb-1 tracking-tight break-keep">
+                <h3 className="font-bold text-pink-300 text-base sm:text-lg mb-1 tracking-tight break-keep drop-shadow-[0_0_3px_rgba(244,114,182,0.6)]">
                   🎧 DJブース & フォトスポット
                 </h3>
                 <p className="text-slate-100 text-sm leading-relaxed font-medium">
