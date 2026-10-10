@@ -229,7 +229,7 @@ function StatusContent() {
                   🌌 宇宙×80's ディスコ空間
                 </h3>
                 <p className="text-slate-100 text-sm leading-relaxed font-medium">
-                  宇宙をイメージした空間にミラーボールやネオンライトが輝く、ギラギラでポップな80年代ディスコを再現！
+                  宇宙をイメージした空間にミラーボールやネオンライトが輝く、ギラギラでポップな80年代バブル期ディスコを再現！
                 </p>
               </div>
 
