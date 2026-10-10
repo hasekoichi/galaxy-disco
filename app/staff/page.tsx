@@ -165,7 +165,7 @@ export default function StaffPage() {
                           : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                       }`}
                     >
-                      待ち
+                      待機中
                     </button>
                     <button
                       onClick={() => updateStatus(t.id, 'called')}
@@ -175,7 +175,7 @@ export default function StaffPage() {
                           : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                       }`}
                     >
-                      呼び出し中
+                      呼び出す
                     </button>
                     <button
                       onClick={() => updateStatus(t.id, 'entered')}
@@ -185,7 +185,7 @@ export default function StaffPage() {
                           : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                       }`}
                     >
-                      完了
+                      入場済み
                     </button>
 
                     {/* 個別削除ボタン */}
