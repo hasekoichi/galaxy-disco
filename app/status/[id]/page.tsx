@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, Suspense } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
@@ -20,54 +20,6 @@ function StatusContent() {
   const [currentCalled, setCurrentCalled] = useState<Ticket[] | []>([])
   const [waitingCount, setWaitingCount] = useState<number>(0)
   const [loading, setLoading] = useState(true)
-  const [soundEnabled, setSoundEnabled] = useState(false)
-
-  // 前回のステータスを保持して、'called' に変化した瞬間を検知する
-  const prevStatusRef = useRef<string | null>(null)
-
-  // 🔔 音とバイブレーションを鳴らす関数
-  const playNotification = () => {
-    // 1. バイブレーション (500ms鳴る -> 200ms休み -> 500ms鳴る...)
-    if (typeof window !== 'undefined' && 'vibrate' in navigator) {
-      try {
-        navigator.vibrate([500, 200, 500, 200, 500])
-      } catch (e) {
-        console.log('Vibration error:', e)
-      }
-    }
-
-    // 2. Web Audio API で「ピポーン！」音を生成して鳴らす
-    try {
-      const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext
-      if (!AudioContext) return
-      const ctx = new AudioContext()
-
-      const playTone = (freq: number, start: number, duration: number) => {
-        const osc = ctx.createOscillator()
-        const gain = ctx.createGain()
-        osc.type = 'sine'
-        osc.frequency.setValueAtTime(freq, ctx.currentTime + start)
-        gain.gain.setValueAtTime(0.3, ctx.currentTime + start)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration)
-        osc.connect(gain)
-        gain.connect(ctx.destination)
-        osc.start(ctx.currentTime + start)
-        osc.stop(ctx.currentTime + start + duration)
-      }
-
-      // 「ピ（880Hz）ー ポーン（1760Hz）」
-      playTone(880, 0, 0.25)
-      playTone(1760, 0.25, 0.6)
-    } catch (e) {
-      console.log('Audio error:', e)
-    }
-  }
-
-  // 通知を有効化するボタンが押されたとき
-  const enableSound = () => {
-    setSoundEnabled(true)
-    playNotification() // 起動確認用のダミー再生
-  }
 
   // データの取得とリアルタイム購読の設定
   useEffect(() => {
@@ -83,12 +35,7 @@ function StatusContent() {
 
       if (ticketError) {
         console.error('チケット取得エラー:', ticketError)
-      } else if (ticketData) {
-        // 待ち状態から「called（呼び出し）」に変わった瞬間に通知！
-        if (prevStatusRef.current === 'waiting' && ticketData.status === 'called') {
-          playNotification()
-        }
-        prevStatusRef.current = ticketData.status
+      } else {
         setMyTicket(ticketData)
       }
 
@@ -170,22 +117,6 @@ function StatusContent() {
         </header>
 
         <div className="max-w-md mx-auto p-4 space-y-6 flex-grow w-full">
-          
-          {/* 🔔 通知許可ボタンエリア */}
-          {!soundEnabled ? (
-            <button
-              onClick={enableSound}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-3 px-4 rounded-2xl shadow-[0_0_15px_rgba(236,72,153,0.5)] border border-pink-400/50 flex items-center justify-center gap-2 animate-bounce transition transform active:scale-95"
-            >
-              <span className="text-xl">🔔</span>
-              <span>タップして「呼び出し音＆バイブ」をONにする</span>
-            </button>
-          ) : (
-            <div className="bg-slate-900/80 border border-emerald-500/50 text-emerald-400 font-bold text-center py-2 px-4 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-inner">
-              <span>✅ 呼び出し通知（音・振動）が有効です</span>
-            </div>
-          )}
-
           {/* ステータスカード */}
           <div className="bg-slate-900/95 border-2 border-slate-700 rounded-3xl p-6 sm:p-8 shadow-[0_0_30px_rgba(0,0,0,0.5)] text-center relative overflow-hidden backdrop-blur-md">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-[0_0_15px_rgba(236,72,153,0.9)]"></div>
